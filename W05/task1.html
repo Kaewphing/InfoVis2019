@@ -67,3 +67,60 @@
      </script>
   </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title> W05 Task1 </title>
+
+  <style>
+    body{
+    margin: 0;
+    overflow; hidden;
+
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="Canvas"></canvas>
+  <script src="THREE"></script>
+
+  <script>
+    var renderer, camera, scene, light, light1, geometry, material, mesh;
+
+
+    renderer = new THREE.WebGLRender({canvas: document.getElementById('Canvas'), antialias: true});
+    renderer.setClearColor(0x000000);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+
+    camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000);
+
+
+    scene = new THREE.Scene();
+
+
+    light =new THREE.AmbientLight(0xffffff, 0.5);
+    light1 =new THREE.PointLight(0xffffff, 0.5);
+    scene.add(light, light1);
+
+
+    geometry = new THREE.BoxGeometry(100, 100,100);
+    material = new THREE.MeshNormalMaster();
+    mesh = new THREE.Mesh(geometry, material);
+    mesh.position.setSize(0, 0, -1000);
+
+    requestAnimationFrame(render);
+
+    function render(){
+      mesh.rotation.x += 0.01;
+      mesh.rotation.y += 0.01;
+      renderer.render(scene, camera);
+      requestAnimationFrame(render);
+    }
+  </script>
+</body>
+
+
+</html>
