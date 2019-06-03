@@ -3,7 +3,7 @@
 	<title>W06 task03</title>
     </head>
      <body>
-      <script src="https://threejs.org/build/three.min.js"></script>    
+      <script src="https://threejs.org/build/three.min.js"></script>
 	<script type="x-shader/x-vertex" id="phong.vert">
 	  varying vec3 point_color;
 	  varying vec4 point_position;
@@ -12,18 +12,18 @@
 	  point_color = color;
 	  point_position = modelViewMatrix * vec4( position, 1.0 );
 	  normal_vector = normalMatrix * normal;
-	  
+
 	  gl_Position = projectionMatrix * point_position;
 	  }
 	</script>
-	
+
 	<script type="x-shader/x-fragment" id="phong.frag">
 	  varying vec3 point_color;
 	  varying vec4 point_position;
 	  varying vec3 normal_vector;
 	  uniform vec3 light_position;
 	  uniform vec3 camera_position;
-	  
+
 	vec3 BlinnPhongReflection( vec3 C, vec3 L, vec3 N, vec3 V ){
          float ka = 0.4;
          float kd = 0.6;
@@ -39,7 +39,7 @@
          return C * ( Ia + Id + Is );
         }
 
-	    
+
 	 void main(){
 	     vec3 C = point_color;
 	     vec3 L = normalize( light_position - point_position.xyz );
@@ -47,7 +47,7 @@
 	     vec3 V = normalize( camera_position - point_position.xyz );
 
 	     vec3 shaded_color = BlinnPhongReflection( C, L, N, V );
-	    
+
 	     gl_FragColor = vec4( shaded_color, 1.0 );
 	 }
 	</script>
@@ -107,15 +107,15 @@
         }
     }
 </script>
-	
+
 
 	  <br>
-	  <div>	    
+	  <div>
 	    <div id="display1" style="width:10%; float:left; margin-bottom: 5px;"></div>
 	    <div id="display2" style="width:10%; float:left; margin-bottom: 5px;"></div>
 	  </div>
 	</div>
-	  
+
 	  <script>
 	    var vert_shader = document.getElementById('gouraud.vert').text;
 	    var frag_shader = document.getElementById('gouraud.frag').text;
@@ -123,7 +123,7 @@
 	    var target_dom = document.getElementById('display1');
 	    main( vert_shader, frag_shader, reflection_model, target_dom );
 	  </script>
-	  
+
 	  <script>
 	    var vert_shader = document.getElementById('phong.vert').text;
 	    var frag_shader = document.getElementById('phong.frag').text;
@@ -131,7 +131,7 @@
 	    var target_dom = document.getElementById('display2');
 	    main( vert_shader, frag_shader, reflection_model, target_dom );
 	  </script>
-	  
+
 
     </body>
 </html>
