@@ -1,6 +1,6 @@
 <html>
     <head>
-	<title>task03</title>
+	<title>W08 task01</title>
     </head>
     <body>
 	<script src="http://threejs.org/build/three.min.js"></script>
@@ -301,11 +301,13 @@
         [ -1, -1, 0 ], // 1
         [  1, -1, 0 ],  // 2
         [  1, 1, 0 ]  // 3
+
     ];
 
     var faces = [
         [0, 1, 2 ], // f0
         [0, 2, 3 ], // f0
+
     ];
     var scalars = [
         5,  // S0
@@ -362,6 +364,7 @@
         geometry.faces[i].vertexColors.push( C0 );
         geometry.faces[i].vertexColors.push( C1 );
         geometry.faces[i].vertexColors.push( C2 );
+
     }
     var triangle = new THREE.Mesh( geometry, material );
     scene.add( triangle );
@@ -371,11 +374,10 @@
         requestAnimationFrame( loop );
         renderer.render( scene, camera );
     }
-}
-	    
-	    </script>
+}</script>
 	<script>
 	 main();
 	</script>
     </body>
 </html>
+
